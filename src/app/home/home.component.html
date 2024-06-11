@@ -1,0 +1,83 @@
+<h1>HI !!!!</h1>
+<!-- interpolation -->
+<b>NAME : {{name}}</b>
+<br>
+<b>Age : {{age}}</b>
+<br>
+<!-- one way binding -->
+<span [innerText]="age"></span>
+<!-- two way data binding -->
+<!-- preferred to avoid two-way due to bad performance -->
+<br>
+<input type="text" [(ngModel)]="name" value="name" />
+<br>
+<!-- property binding example -->
+<br>
+<h2 [style.color]="getcolor()">PROPERTY</h2>
+<!-- <img [src]="kblimage">  -->
+<img src="../assets/download.jpg">
+<br>
+<!-- event binding -->
+<br>
+{{switch}}
+<br>
+<button (click)="switch=!switch">Switch</button>
+<!-- other syntax of event binding -->
+<br>
+{{switch2}}
+<button on-click="switch2=!switch2">CLICK</button>
+<br>
+<!-- Attribute Directive ngClass -->
+<h3 ngClass="centered-text underlined" class="orange">
+    {{name}} PROJECT
+</h3>
+<!-- Attribute Directive ngStyle -->
+<p style="padding: 1rem" [ngStyle]="alertStyles">This is sample</p>
+
+-----------------------------------------------------------------<br>
+<!-- Structural Directive -->
+<!-- in list of array of customers -- CUSTOMER is one element -->
+<!-- NOTE : multiple structural directive can never be added to on element.  
+means *ngIF and *ngFor can not be uses together  -->
+<br>
+<!-- <button (click)="choose=!choose">CLICK TO CHECK DETAILS</button>
+<br>
+<div *ngIf="choose">
+</div> -->
+
+<input type="text" [(ngModel)]="tab" />
+<div [ngSwitch]="tab">
+    <div *ngSwitchCase="1">Tab content 1</div>
+    <div *ngSwitchCase="2">
+        <div *ngIf="choose">
+        </div>
+        <button (click)="choose=!choose">CLICK TO CHECK DETAILS</button>
+        <br>
+        <div *ngFor="let customer of customers; let i=index;let isEven=even;">
+            <!-- interpolation -->
+            <!-- <div>{{customer}}</div> -->
+            <div>{{i}}</div>
+            <div>{{isEven}}</div>
+            <div>{{customer.name}}</div>
+            <div>{{customer.age}}</div>
+            <div *ngFor="let child of customer.child">
+                Child Name: {{child.childname}}
+            </div>
+            <br>
+        </div>
+    </div>
+    <div *ngSwitchCase="3">Tab content 3</div>
+    <div *ngSwitchDefault>
+        Select a tab 1 or 2 or 3
+        <div>Tab content 1</div>
+        <div>Tab content 2</div>
+        <div>Tab content 3</div>
+    </div>
+</div>
+<!--  appStyleChange--- selector of directive.ts file-->
+<!-- custom directive concept -->
+<h2 appStyleChange><i><b>CUSTOM DIRECTIVE</b></i></h2>
+<div class="big">Css Style Implementation</div> 
+<h1>Without style</h1>
+<h2 appRenderStyle>Directive Style Implementation</h2>
+<button routerLink="/dependancy">Go to PIPE examples</button>

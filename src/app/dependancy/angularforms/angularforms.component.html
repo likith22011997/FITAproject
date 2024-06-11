@@ -1,0 +1,79 @@
+<!-- Template Driven Forms -->
+<!-- Tipical Form : -->
+<!-- <form method="POST" action="/register" id="signup-form">
+<label for="email">Email</label>
+<input type="text" name="email" id="email">
+<br>
+<label for="password">Password</label>
+<input type="password" name="password" id="password">
+<br>
+<button type="submit">Sign Up</button>
+</form> -->
+
+<!-- <form #signupForm="ngForm" (ngSubmit)="registerUser(signupForm)">
+  <label for="email">Email</label>
+  <input type="text" name="email" id="email" ngModel>
+  <label for="password">Password</label>
+  <input type="password" name="password" id="password" ngModel>
+  <button type="submit">Sign Up</button>
+</form> -->
+
+<!-- <form #paymentForm="ngForm" (ngSubmit)="purchase(paymentForm)">
+  
+  <div ngModelGroup="contact">
+    <legend>Contact</legend>
+    <label>
+      First Name <input type="text" name="firstname" ngModel>
+    </label>
+    <label>
+      Last Name <input type="text" name="lastname1" ngModel>
+    </label>
+  </div>
+  <div ngModelGroup="address">
+    <label>
+      city <input type="text" name="city" ngModel>
+    </label>
+  </div>
+  <div ngModelGroup="paymentCard">
+  </div>
+  <button type="submit">Sign Up</button>
+</form> -->
+
+<!-- Reactive forms example -->
+<!-- <form [formGroup]="loginForm" (ngSubmit)="login()">
+  <label>username</label>
+  <input type="text" formControlName="username">
+  <br>
+  <label>City</label>
+  <input type="text" formControlName="city">
+  <br>
+  <button type="submit">log in</button>
+</form> -->
+
+<!-- Validators example with reactive form -->
+<form [formGroup]="loginForm" (ngSubmit)="login()">
+  <label>username</label>
+  <input type="text" formControlName="username"><br>
+  <span [hidden]="loginForm.controls.username?.valid"><i><b>Invalid username</b></i></span>
+  <br>
+  <label>Password</label>
+  <input type="text" formControlName="password"><br>
+  <span [hidden]="loginForm.controls.password?.valid"><i><b>Invalid password</b></i></span>
+  <br>
+  <label>EMail</label>
+  <input type="text" formControlName="email"><br>
+  <div formGroupName="address">
+    <label>state</label>
+    <input type="text" formControlName="state">
+  </div><br>
+  <button type="submit" [disabled]="!loginForm.valid">log in</button><br>
+</form>
+
+<!-- parent to child component passing data we use property binding 
+ This attribute can then be accessed within the child component using the @inputdecorator,
+ in this case we have considered angularforms component as child componenet-->
+<!-- <h2>child works !! : {{count}}</h2> -->
+
+<!-- passing data child to parent component using @Output decorator and Eventemitter. -->
+ <!-- <input type="text" #myInput>
+ <span (click)="onClick(myInput.value)">Click here to transport!!</span> -->
